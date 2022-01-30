@@ -1,0 +1,3 @@
+Every time when i ready about node, i fell i'am not know much about him.
+The Node.Js is very simple but the advanced features hidden some advanceds concepts, like communication protocols, files, streams, buffer, and some another stuffs.
+
