@@ -40,6 +40,8 @@ defmodule BackendWeb.Router do
       pipe_through :browser
 
       live_dashboard "/dashboard", metrics: BackendWeb.Telemetry
+
+      get "/categories", CategoryController, :index
     end
   end
 
