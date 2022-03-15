@@ -3,7 +3,7 @@ import Config
 # Configure your database
 config :backend, Backend.Repo,
   username: "postgres",
-  password: "postgres",
+  password: "somepassword",
   hostname: "localhost",
   database: "backend_dev",
   show_sensitive_data_on_connection_error: true,
