@@ -25,6 +25,7 @@ defmodule BackendWeb.Router do
   #   pipe_through :api
   # end
 
+  # coveralls-ignore-start
   # Enables LiveDashboard only for development
   #
   # If you want to use the LiveDashboard in production, you should put
@@ -39,6 +40,8 @@ defmodule BackendWeb.Router do
       pipe_through :browser
 
       live_dashboard "/dashboard", metrics: BackendWeb.Telemetry
+
+      get "/categories", CategoryController, :index
     end
   end
 
@@ -53,4 +56,6 @@ defmodule BackendWeb.Router do
       forward "/mailbox", Plug.Swoosh.MailboxPreview
     end
   end
+
+  # coveralls-ignore-stop
 end
