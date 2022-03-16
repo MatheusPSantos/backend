@@ -36,12 +36,12 @@ defmodule BackendWeb.Router do
   if Mix.env() in [:dev, :test] do
     import Phoenix.LiveDashboard.Router
 
-    scope "/" do
+    scope "/api" do
       pipe_through :browser
 
       live_dashboard "/dashboard", metrics: BackendWeb.Telemetry
 
-      get "/categories", CategoryController, :index
+      get "/categories", BackendWeb.CategoryController, :index
     end
   end
 
