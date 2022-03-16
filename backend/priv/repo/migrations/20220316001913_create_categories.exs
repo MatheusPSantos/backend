@@ -6,6 +6,8 @@ defmodule Backend.Repo.Migrations.CreateCategories do
       add :id, :binary_id, primary_key: true
       add :name, :string
       add :description, :text
+
+      timestamps()
     end
   end
 end
