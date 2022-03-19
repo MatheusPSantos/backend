@@ -1,6 +1,8 @@
 defmodule BackendWeb.Router do
   use BackendWeb, :router
 
+  alias BackendWeb.CategoryController
+
   pipeline :browser do
     plug :accepts, ["html"]
     plug :fetch_session
@@ -37,11 +39,11 @@ defmodule BackendWeb.Router do
     import Phoenix.LiveDashboard.Router
 
     scope "/api" do
-      pipe_through :browser
-
       live_dashboard "/dashboard", metrics: BackendWeb.Telemetry
 
-      get "/categories", BackendWeb.CategoryController, :index
+      get "/categories", CategoryController, :index
+      get "/categories/:id", CategoryController, :show
+      post "/categories", CategoryController, :create
     end
   end
 
