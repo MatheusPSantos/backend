@@ -1,6 +1,8 @@
 defmodule BackendWeb.Router do
   use BackendWeb, :router
 
+  alias BackendWeb.CategoryController
+
   pipeline :browser do
     plug :accepts, ["html"]
     plug :fetch_session
@@ -36,12 +38,12 @@ defmodule BackendWeb.Router do
   if Mix.env() in [:dev, :test] do
     import Phoenix.LiveDashboard.Router
 
-    scope "/" do
-      pipe_through :browser
-
+    scope "/api" do
       live_dashboard "/dashboard", metrics: BackendWeb.Telemetry
 
       get "/categories", CategoryController, :index
+      get "/categories/:id", CategoryController, :show
+      post "/categories", CategoryController, :create
     end
   end
 
