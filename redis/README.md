@@ -30,11 +30,15 @@ Includes:
 2. Redis with CLI.
 
   - External programs talk to Redis using a TCP socket and a REDIS specific protocol.
-  - Testing redis-cli: ```bash
+  - Testing redis-cli: 
+  ```bash
   $ redis-cli
   > ping
   PONG
   ```
   - `set mykey somevalue` faz um set de um valor **somevalue** na chave **somekey**.
   - `get mykey` faz um get através da chave **mykey**.
-  
+
+## Data types tutorial
+
+
