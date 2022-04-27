@@ -40,4 +40,60 @@ Terminologias:
 
 ### Tipos
 - Tipos em Go são estáticos
-- A
+- Ao declarar uma variável para conter valroes de um certo tipo, ela só poderá ter valores desse tipo.
+- o valor pode ser declarado especificamente
+    - var Nome Tipo = valor
+- a declaração da variavel sem inicialização, essa inicialização so pode ser feita dentro de um code-block.
+- tipos
+    - int, string, bol
+- Tipos compostos
+    - tipos formados pelo usuário a partir dos tipos primitivos
+    - slice, array, struct, map
+- O ato de definir, criar e estruturar tipos compostos chama-se composição.
+
+### Valor zero
+- sempre que declarar uma variável e não inicializar ela, ela terá o valor zero.
+- declaração -> alocar um espaço de memória
+- inicialização -> primeiro valor guardado dentro da variável
+- atribuição -> alteração do valor após ela ser inicializada
+- valor zero de atribuição
+    - int -> 0
+    - float -> 0.0
+    - boolean -> false
+    - strings -> ""
+    - pointers, functions, interfaces, slices, channels, maps --> nil
+- usar `:=` sempre que possível
+- usar `var` para package level scope
+
+
+### Pacote fmt
+- Setup: strings, ints, bools
+- Strings: interpreted string literal vs raw string literals.
+- Format printing:
+    - Grupo #1: Print -> standard out
+        - func Print(a ...interface{})
+        - func Println(a ...interface{})
+        - func Printf(a ...interface{})
+            - Format verbs. (%v %T)
+    - Grupo #2: Print -> string, pode ser usado como variável
+        - func Sprint(a ...interface{})
+        - func Sprintf(format string, a ...interface{})
+        - func Sprintln(a ...interface{})
+    - Grupo #3: Print -> File, write interface, e.g. arquivo ou resposta de servidor
+        - func Fprint(w io.Writer, a ...interface{})
+        - func Fprintf(w io.Writer, format string, a ...interface{})
+        - func Fprintln(w io.Writer, a ...interface{})
+
+### Criando o próprio tipo
+- Tipos são imutáveis
+- type hotdog int -> var p hotdog
+- exemplo:
+    ```go
+    type hotdog int
+    var b hotdog
+    ```
+### Conversão de tipos
+- a = int(b)
+- documentação oficial sobre conversions
+    - são expressões da forma T(x) one T é o tipo e x é uma expressão que pode ser convertida para o tipo T.
+    
