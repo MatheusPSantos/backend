@@ -96,4 +96,96 @@ Terminologias:
 - a = int(b)
 - documentação oficial sobre conversions
     - são expressões da forma T(x) one T é o tipo e x é uma expressão que pode ser convertida para o tipo T.
-    
+
+## Cap 2 - Fundamentos de programação
+### Tipos numéricos
+
+- int vs. float: Números inteiros vs. números com frações
+- ref/spec -> numeric types
+- Integers:
+    - Números inteiros
+    - int & uint -> "implementation- specific size"
+    - Todos os tipos são distintos, execto:
+        - byte = uint8
+        - rune = int32 (UTF8)
+        - na codificação utf8 podemos usar 1,2 ou 3 bytes
+    - Tipos são únicos
+        - Go é uma linguagem estática
+        - int e int32 não são a mesma coisa
+        - Par "misturá-los" é necessário conversão
+    - Regra gera: usar somente `int`
+- Floating point:
+    - São números racionais ou reais
+    - Regra geral: use somente float64
+- Na prática:
+    - Defaults com :=
+    - Tipagem com var
+    - Dá pra colocar número com virgula em tipo int? não.
+    - Overflow
+- implementation-specific size? Runtime package. Word.
+    - GOOS
+    - GORUNTIME
+- Overflow:
+    - um uint16, por exemplo, vai de 0 a 65535
+    - o que acontece se tentar usar 65536?
+    - se tivermos no 65535 e adicionarmos mais 1?
+
+### Tipos strings
+- string são sequencia de bytes
+
+### Sistemas numéricos
+- decimal
+- binário
+- hexa-decimal
+### Constantes
+- são valores imutáveis
+- podem ser tipadas ou não:
+    - const oi = "bom dia"
+    - const oi string = "bom dia"
+- As não tipadas só terão um tipo atribuido a elas quando forem usadas;
+    - Ex. qual o tipo de 42? int? uint? float64?
+    - ou seja, é uma flexibilidade conveniente.
+- Na prática: int, float, string
+    - const x = y
+    - const (x = y)
+    - exemplo: 
+    ```
+    const ( 
+            x = 10
+            u = 012
+            k = 0b23
+            )
+    ```
+
+### Iotas
+Dentro de uma declaração de uma constante, o identificador `iota` representa constantes sucessivos inteiros não tipados.
+- uma forma de declarar iota
+```
+const (
+	a = iota
+	_
+	c
+	x
+	y
+	z
+)
+```
+- pode-se aplicar formulas
+```
+const (
+	a = iota * 2
+	_
+	c
+	x
+	y
+	z
+)
+// saida => a = 0, c = 4, x = 6. y = 8, z = 10
+```
+
+### Deslocamento de bits
+- Deslocamento de bits é quando deslocamos binários para a esquerda ou direita.
+- Na prática:
+    - %d %b
+    - x << y
+    - iota * 10 << 10 = kb, mb, gb
