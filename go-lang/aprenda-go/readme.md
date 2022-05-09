@@ -219,3 +219,18 @@ for x:= 0; x < 10; x++ {
 - For: continue
 
 ### Loops: utilizando ascii
+```go
+for x:=0; x <= 127; x++{
+    fmt.Println("%d: %v", x, string(x))
+}
+```
+- Saída: caracteres da tabela ascii
+
+### Condicionais: declaração if
+- É possível dar uma condição inicial antes do if rodar;
+```go 
+if x:=10; !(x < 10) {
+    fmt.Print("hello!\n")
+}
+```
+
