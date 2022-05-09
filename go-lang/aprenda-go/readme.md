@@ -189,3 +189,33 @@ const (
     - %d %b
     - x << y
     - iota * 10 << 10 = kb, mb, gb
+
+## Cap 6 - Fluxo de controle
+- computadores leem programas de uma maneira sequêncial.
+- fluxo de controle de repetição.
+- fluxo de controle condicional, ou fluxo de controle de seleção.
+
+### Loops
+- inicialização, condição, pós
+- sintaxe:
+```go
+for x:= 0; x < 10; x++ {
+    // codeblock
+}
+```
+
+- Não possui a condição `while`
+- For pode ser usado com os três statements ou somente com a condição, simulando um while.
+- For: ...ever? (http servers)
+- for: break
+- ref/spec#For_statements, effective go
+
+### Nested Loops
+- repetições que ocorrem dentro de repetições.
+
+### Loops: break & continue
+- Operação módulo: %
+- For: break
+- For: continue
+
+### Loops: utilizando ascii
