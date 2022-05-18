@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { PlayersModule } from './players/players.module';
@@ -7,12 +8,10 @@ import { PlayersModule } from './players/players.module';
     PlayersModule,
     PlayersModule,
     MongooseModule.forRoot(
-      "mongodb+srv://matheus:matheus123@cluster0.s1zrh.mongodb.net/?retryWrites=true&w=majority",
+      `${process.env.MONGO_URL}`,
       {
         useNewUrlParser: true,
-        useCreateIndex: true,
-        useUnifiedTopology: true,
-        useFindAndModify: false
+        useUnifiedTopology: true
       }
     )],
   controllers: [],
