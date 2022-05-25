@@ -3,6 +3,8 @@ import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { PlayersModule } from './players/players.module';
 import { CategoriesModule } from './categories/categories.module';
+import { ChallengesController } from './challenges/challenges.controller';
+import { ChallengesModule } from './challenges/challenges.module';
 
 @Module({
   imports: [
@@ -15,8 +17,9 @@ import { CategoriesModule } from './categories/categories.module';
         useUnifiedTopology: true
       }
     ),
-    CategoriesModule],
-  controllers: [],
+    CategoriesModule,
+    ChallengesModule],
+  controllers: [ChallengesController],
   providers: [],
 })
 export class AppModule { }
