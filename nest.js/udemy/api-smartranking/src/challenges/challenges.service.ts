@@ -1,9 +1,10 @@
-import { BadRequestException, Injectable, Logger } from '@nestjs/common';
+import { BadRequestException, Injectable, Logger, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { CategoriesService } from 'src/categories/categories.service';
 import { PlayersService } from 'src/players/players.service';
 import { CreateChallengeDto } from './dtos/create-challenge.dto';
+import { UpdateChallengeDto } from './dtos/update-challenge.dto';
 import { ChallengeStatus } from './interfaces/challenge-status.enum';
 import { Challenge } from './interfaces/challenge.interface';
 
@@ -50,5 +51,42 @@ export class ChallengesService {
         challengeCreated.status = ChallengeStatus.PENDING;
         this.logger.log(`challengeCreated: ${JSON.stringify(challengeCreated)}`);
         return await challengeCreated.save();
+    }
+
+    async consultAllChallenges(): Promise<Array<Challenge>> {
+        return await this.challengeModel.find()
+            .populate('requester')
+            .populate('players')
+            .populate('match')
+            .exec()
+    }
+
+    async consultSingleChallenge(_id: any): Promise<Array<Challenge>> {
+        const players = await this.playersService.getAllPlayers();
+        const playerFilter = players.filter(player => player._id == _id);
+        if (playerFilter.length === 0) {
+            throw new BadRequestException(`The id ${_id} it is not a player.`);
+        }
+        return await this.challengeModel.find()
+            .where('players')
+            .in(_id)
+            .populate('requester')
+            .populate('players')
+            .populate('match')
+            .exec()
+    }
+
+    async updateChallenge(_id: string, updateChallengeDto: UpdateChallengeDto): Promise<void> {
+        const challengeFound = await this.challengeModel.findById(_id).exec();
+        if (!challengeFound) throw new NotFoundException(`Challenge ${_id} not found.`);
+
+        if (updateChallengeDto.status) {
+            challengeFound.requesterDateHour = new Date();
+        }
+
+        challengeFound.status = updateChallengeDto.status;
+        challengeFound.challengeDateHour = updateChallengeDto.challengeDateHour;
+
+        await this.challengeModel.findOneAndDelete({ _id }, { $set: challengeFound }).exec();
     }
 }
