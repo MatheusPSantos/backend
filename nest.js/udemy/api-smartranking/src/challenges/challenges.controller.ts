@@ -1,5 +1,6 @@
 import { Body, Controller, Delete, Get, Logger, Param, Post, Put, Query, UsePipes, ValidationPipe } from '@nestjs/common';
 import { ChallengesService } from './challenges.service';
+import { AssignChallengeToMatchDto } from './dtos/assigne-challenge-to-match.dto';
 import { CreateChallengeDto } from './dtos/create-challenge.dto';
 import { UpdateChallengeDto } from './dtos/update-challenge.dto';
 import { Challenge } from './interfaces/challenge.interface';
