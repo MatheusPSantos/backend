@@ -16,7 +16,7 @@ export class CategoryController {
         return await this.categoryRespository.find();
     }
 
-    @Get('category-create')
+    @Get('create')
     async categoryCreate() {
         const category = await this.categoryRespository.create({ name: 'category test' });
         return await this.categoryRespository.save(category);
