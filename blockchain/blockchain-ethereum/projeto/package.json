@@ -1,0 +1,22 @@
+{
+  "name": "blockchain-ethereum",
+  "version": "1.0.0",
+  "description": "projeto do livro blockchain ethereum da caelum",
+  "main": "index.js",
+  "scripts": {
+    "test": "test",
+    "compile": "node ./scripts/compile.js"
+  },
+  "keywords": [
+    "blockchain",
+    "ethereum"
+  ],
+  "author": "matheuspsantos",
+  "license": "MIT",
+  "devDependencies": {
+    "chalk": "^4.1.1",
+    "mocha": "^9.1.3",
+    "solc": "^0.8.12",
+    "web3": "^3.0.0-rc.5"
+  }
+}
