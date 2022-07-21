@@ -57,7 +57,31 @@ contract StudentsContract {
     )
     public
     {
+        require(
+            isStudentNameValid(_studentName),
+            "Name must be informed"
+        );
         
+        require(
+            isStudentAgeValid(_studentAge),
+            "Age must be informed"
+        );
+
+        require(
+            !isStudentValid(
+                getEnrolledStudentsByAddress(msg.sender)
+            ),
+            "Student already enrolled"
+        );
+
+
+        Student memory student;
+        student.studentName = _studentName;
+        student.studentAge = _studentAge;
+
+        assert(isStudentValid(student));
+
+        _enrolledStudents[msg.sender] = student;        
     }
 
 
