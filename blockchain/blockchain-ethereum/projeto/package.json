@@ -4,8 +4,9 @@
   "description": "projeto do livro blockchain ethereum da caelum",
   "main": "index.js",
   "scripts": {
-    "test": "test",
-    "compile": "node ./scripts/compile.js"
+    "test": "npx mocha",
+    "compile": "node ./scripts/compile.js",
+    "compile:student": "node ./scripts/compile-student-contract.js"
   },
   "keywords": [
     "blockchain",
