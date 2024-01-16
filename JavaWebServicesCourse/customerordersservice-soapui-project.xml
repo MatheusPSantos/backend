@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="a5e7ccf5-9257-4833-a974-5625afa3ab4d" activeEnvironment="Default" name="customerordersservice" resourceRoot="" soapui-version="5.7.1" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="17da9cc2-7c04-4aed-a41e-50e2dce615d8" wsaVersion="NONE" name="CustomerOrderWsImplServiceSoapBinding" type="wsdl" bindingName="{http://soap.ws.matheus.com/}CustomerOrderWsImplServiceSoapBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/wsdlfirstws/customerorderservice?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/wsdlfirstws/customerorderservice?wsdl"><con:part><con:url>http://localhost:8080/wsdlfirstws/customerorderservice?wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="CustomerOrderWsImplService" targetNamespace="http://soap.ws.matheus.com/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://soap.ws.matheus.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns2="http://schemas.xmlsoap.org/soap/http" xmlns:ns1="http://trainings.ws.matheus.com/">
+  <wsdl:import location="http://localhost:8080/wsdlfirstws/customerorderservice?wsdl=CustomerOrdersPortType.wsdl" namespace="http://trainings.ws.matheus.com/"></wsdl:import>
+  <wsdl:binding name="CustomerOrderWsImplServiceSoapBinding" type="ns1:CustomerOrdersPortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="createOrders">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="createOrders">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="createOrdersResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getOrders">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getOrders">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getOrdersResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteOrders">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="deleteOrders">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="deleteOrdersResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CustomerOrderWsImplService">
+    <wsdl:port binding="tns:CustomerOrderWsImplServiceSoapBinding" name="CustomerOrderWsImplPort">
+      <soap:address location="http://localhost:8080/wsdlfirstws/customerorderservice"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part><con:part><con:url>http://localhost:8080/wsdlfirstws/customerorderservice?wsdl=CustomerOrdersPortType.wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="CustomerOrdersPortType" targetNamespace="http://trainings.ws.matheus.com/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://trainings.ws.matheus.com/">
+  <wsdl:types>
+    <xs:schema targetNamespace="http://trainings.ws.matheus.com/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://trainings.ws.matheus.com/">
+      <xs:element name="createOrdersRequest" type="tns:createOrdersRequest"/>
+      <xs:element name="createOrdersResponse" type="tns:createOrdersResponse"/>
+      <xs:element name="deleteOrdersRequest" type="tns:deleteOrdersRequest"/>
+      <xs:element name="deleteOrdersResponse" type="tns:deleteOrdersResponse"/>
+      <xs:element name="getOrdersRequest" type="tns:getOrdersRequest"/>
+      <xs:element name="getOrdersResponse" type="tns:getOrdersResponse"/>
+      <xs:complexType name="createOrdersRequest">
+        <xs:sequence>
+          <xs:element name="customerId" type="xs:integer"/>
+          <xs:element name="order" type="tns:order"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="order">
+        <xs:sequence>
+          <xs:element name="id" type="xs:integer"/>
+          <xs:element maxOccurs="unbounded" name="product" type="tns:product"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="product">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="id" type="xs:string"/>
+          <xs:element minOccurs="0" name="description" type="xs:string"/>
+          <xs:element minOccurs="0" name="quantity" type="xs:integer"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="createOrdersResponse">
+        <xs:sequence>
+          <xs:element name="result" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getOrdersRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="customerId" type="xs:integer"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getOrdersResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="order" nillable="true" type="tns:order"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="deleteOrdersRequest">
+        <xs:sequence>
+          <xs:element name="customerId" type="xs:integer"/>
+          <xs:element name="order" type="tns:order"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="deleteOrdersResponse">
+        <xs:sequence>
+          <xs:element name="result" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="createOrders">
+    <wsdl:part element="ns1:createOrdersRequest" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createOrdersResponse">
+    <wsdl:part element="ns1:createOrdersResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteOrdersResponse">
+    <wsdl:part element="ns1:deleteOrdersResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getOrdersResponse">
+    <wsdl:part element="ns1:getOrdersResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getOrders">
+    <wsdl:part element="ns1:getOrdersRequest" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteOrders">
+    <wsdl:part element="ns1:deleteOrdersRequest" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="CustomerOrdersPortType">
+    <wsdl:operation name="createOrders">
+      <wsdl:input message="ns1:createOrders" name="createOrders"></wsdl:input>
+      <wsdl:output message="ns1:createOrdersResponse" name="createOrdersResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getOrders">
+      <wsdl:input message="ns1:getOrders" name="getOrders"></wsdl:input>
+      <wsdl:output message="ns1:getOrdersResponse" name="getOrdersResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteOrders">
+      <wsdl:input message="ns1:deleteOrders" name="deleteOrders"></wsdl:input>
+      <wsdl:output message="ns1:deleteOrdersResponse" name="deleteOrdersResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/wsdlfirstws/customerorderservice</con:endpoint></con:endpoints><con:operation id="ad1f6d2e-602a-471b-8de6-271a7a1fd780" isOneWay="false" action="" name="createOrders" bindingOperationName="createOrders" type="Request-Response" outputName="createOrdersResponse" inputName="createOrders" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="e6d35cbb-eed7-4f93-9358-3fc313163f9b" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/wsdlfirstws/customerorderservice</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tra="http://trainings.ws.matheus.com/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <tra:createOrdersRequest>
+         <customerId>?</customerId>
+         <order>
+            <id>?</id>
+            <!--1 or more repetitions:-->
+            <product>
+               <!--Optional:-->
+               <id>?</id>
+               <!--Optional:-->
+               <description>?</description>
+               <!--Optional:-->
+               <quantity>?</quantity>
+            </product>
+         </order>
+      </tra:createOrdersRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://soap.ws.matheus.com/CustomerOrdersPortType/createOrders"/></con:call></con:operation><con:operation id="ef6f291c-f94c-4de5-a850-668e31bfda91" isOneWay="false" action="" name="getOrders" bindingOperationName="getOrders" type="Request-Response" outputName="getOrdersResponse" inputName="getOrders" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="9c7d41a3-0fdf-4c4f-a62e-944eefa50c2b" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/wsdlfirstws/customerorderservice</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tra="http://trainings.ws.matheus.com/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <tra:getOrdersRequest>
+         <!--Optional:-->
+         <customerId>?</customerId>
+      </tra:getOrdersRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://soap.ws.matheus.com/CustomerOrdersPortType/getOrders"/></con:call></con:operation><con:operation id="0b2edbf7-8949-4e7e-9862-82d58fd8f341" isOneWay="false" action="" name="deleteOrders" bindingOperationName="deleteOrders" type="Request-Response" outputName="deleteOrdersResponse" inputName="deleteOrders" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="37970ed2-6566-4455-9159-4a08736680f8" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/wsdlfirstws/customerorderservice</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tra="http://trainings.ws.matheus.com/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <tra:deleteOrdersRequest>
+         <customerId>?</customerId>
+         <order>
+            <id>?</id>
+            <!--1 or more repetitions:-->
+            <product>
+               <!--Optional:-->
+               <id>?</id>
+               <!--Optional:-->
+               <description>?</description>
+               <!--Optional:-->
+               <quantity>?</quantity>
+            </product>
+         </order>
+      </tra:deleteOrdersRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://soap.ws.matheus.com/CustomerOrdersPortType/deleteOrders"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:testSuite id="575aa2c5-06a6-4b19-b807-6103d5fe7411" name="CustomerOrderWsImplServiceSoapBinding TestSuite"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="658a6a80-cac4-42c1-9f3e-70214ddea9a3" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="createOrders TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="d44c8acb-21a0-4b2d-9fad-c5cad5832d1c" name="createOrders"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>CustomerOrderWsImplServiceSoapBinding</con:interface><con:operation>createOrders</con:operation><con:request name="createOrders" id="dbb90250-2240-4a48-adff-8cf4608a2943"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/wsdlfirstws/customerorderservice</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tra="http://trainings.ws.matheus.com/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <tra:createOrdersRequest>
+         <customerId>1</customerId>
+         <order>
+            <id>2</id>
+            <!--1 or more repetitions:-->
+            <product>
+               <!--Optional:-->
+               <id>2</id>
+               <!--Optional:-->
+               <description>Macbook Pro</description>
+               <!--Optional:-->
+               <quantity>5</quantity>
+            </product>
+         </order>
+      </tra:createOrdersRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="http://soap.ws.matheus.com/CustomerOrdersPortType/createOrders" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="3d622f07-4fe7-40af-b45f-eba315815172" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="getOrders TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="742d96c3-996e-42a3-a2f4-785958b7099f" name="getOrders"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>CustomerOrderWsImplServiceSoapBinding</con:interface><con:operation>getOrders</con:operation><con:request name="getOrders" id="8273a364-14b4-4993-a2b9-60ff1eec93aa"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/wsdlfirstws/customerorderservice</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tra="http://trainings.ws.matheus.com/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <tra:getOrdersRequest>
+         <!--Optional:-->
+         <customerId>1</customerId>
+      </tra:getOrdersRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="http://soap.ws.matheus.com/CustomerOrdersPortType/getOrders" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="93377ff2-c190-4c79-88d6-90b7fdce7d62" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="createOrders TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="87a67819-5816-4237-ac2d-cbc71dc69ed3" name="createOrders"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>CustomerOrderWsImplServiceSoapBinding</con:interface><con:operation>createOrders</con:operation><con:request name="createOrders" id="a6903478-2efd-4cc5-9fb8-53f2a7f77708"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/wsdlfirstws/customerorderservice</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tra="http://trainings.ws.matheus.com/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <tra:createOrdersRequest>
+         <customerId>?</customerId>
+         <order>
+            <id>?</id>
+            <!--1 or more repetitions:-->
+            <product>
+               <!--Optional:-->
+               <id>?</id>
+               <!--Optional:-->
+               <description>?</description>
+               <!--Optional:-->
+               <quantity>?</quantity>
+            </product>
+         </order>
+      </tra:createOrdersRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="http://soap.ws.matheus.com/CustomerOrdersPortType/createOrders" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="8a25d3ad-9239-4132-95f5-0970ff721fbd" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="getOrders TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="5739e4c3-f24f-4dda-877b-3af4202f1a7f" name="getOrders"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>CustomerOrderWsImplServiceSoapBinding</con:interface><con:operation>getOrders</con:operation><con:request name="getOrders" id="c07bb889-e26b-416e-8bc4-5c3bf8d2480a"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/wsdlfirstws/customerorderservice</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tra="http://trainings.ws.matheus.com/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <tra:getOrdersRequest>
+         <!--Optional:-->
+         <customerId>?</customerId>
+      </tra:getOrdersRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:wsaConfig action="http://soap.ws.matheus.com/CustomerOrdersPortType/getOrders"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="b2299603-95b3-4e43-958f-6c00b8c797b4" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="deleteOrders TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="0dfd8b0a-9429-4922-a9d8-e383ea8fdddb" name="deleteOrders"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>CustomerOrderWsImplServiceSoapBinding</con:interface><con:operation>deleteOrders</con:operation><con:request name="deleteOrders" id="695871b3-d7a0-410a-ac60-5f39bc01446f"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/wsdlfirstws/customerorderservice</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tra="http://trainings.ws.matheus.com/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <tra:deleteOrdersRequest>
+         <customerId>?</customerId>
+         <order>
+            <id>?</id>
+            <!--1 or more repetitions:-->
+            <product>
+               <!--Optional:-->
+               <id>?</id>
+               <!--Optional:-->
+               <description>?</description>
+               <!--Optional:-->
+               <quantity>?</quantity>
+            </product>
+         </order>
+      </tra:deleteOrdersRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="http://soap.ws.matheus.com/CustomerOrdersPortType/deleteOrders" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:patient
+	xmlns:tns="http://www.example.com/Patient" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.example.com/Patient Patient.xsd"
+	id="12"
+>
+    <tns:name>John Doe</tns:name>
+    <tns:age>30</tns:age>
+    <tns:dob>1990-01-15</tns:dob>
+    <tns:email>john.doe@example.com</tns:email>
+    <tns:gender>M</tns:gender>
+    <tns:phone>123-456-7890</tns:phone>
+    <tns:payment>
+		<tns:insurance>
+			<tns:limit>1000</tns:limit>
+			<tns:provider>Croe Blue</tns:provider>
+		</tns:insurance>
+	</tns:payment>
+</tns:patient>

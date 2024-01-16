@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<tns:patient xmlns="http://www.example.com/Patient"
+             xmlns:tns="http://www.example.com/Patient"
+>
+    <tns:id>213</tns:id>
+    <tns:name>John Doe</tns:name>
+    <tns:age>30</tns:age>
+    <tns:dob>1990-01-15</tns:dob>
+    <tns:email>john.doe@example.com</tns:email>
+    <tns:gender>M</tns:gender>
+    <tns:phone>123-456-7890</tns:phone>
+</tns:patient>
