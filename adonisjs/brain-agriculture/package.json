@@ -8,7 +8,8 @@
     "start": "node server.js",
     "test": "node ace test",
     "lint": "eslint . --ext=.ts",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "documenter": "node node_modules/insomnia-documenter/bin/generate.js --config endpoints-documentacao.json -o /docs"
   },
   "eslintConfig": {
     "extends": [
@@ -48,6 +49,7 @@
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-adonis": "^2.1.1",
     "eslint-plugin-prettier": "^5.1.3",
+    "insomnia-documenter": "^0.5.5",
     "pino-pretty": "^10.3.1",
     "prettier": "^3.2.4",
     "typescript": "~4.6",
