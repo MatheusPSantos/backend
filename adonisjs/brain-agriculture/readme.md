@@ -14,6 +14,12 @@ Subir o banco de dados, rodar o comando na pasta do projeto
 docker-compose up -d
 ```
 
+E rodar a API: 
+
+```bash
+npm run dev
+```
+
 Pode ser preciso alterar a variável de ambiente `PG_HOST`, caso não seja possível conectar ao banco de dados.
 
 Para sabem qual o valor de `PG_HOST`, rode o comando:
